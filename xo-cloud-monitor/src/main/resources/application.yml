@@ -1,0 +1,15 @@
+server:
+  port: 49020
+spring:
+  application:
+    name: monitor-server
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:49000/eureka/
+logging:
+  level:
+    root: WARN

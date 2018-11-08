@@ -1,0 +1,22 @@
+server:
+  port: 49010
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Jnoee/xo-cloud.git
+          search-paths: xo-cloud-config-repo
+      label: develop
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:49000/eureka/
+logging:
+  level:
+    root: WARN
